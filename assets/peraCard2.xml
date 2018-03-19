@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="peraCard2.png">
+	<!-- Created with Adobe Animate version 16.2.0.24 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Copia de Símbolo 12 2 2 2 2 2 3 instancia 10000" x="0" y="0" width="197" height="238" pivotX="98" pivotY="119"/>
+	<SubTexture name="Copia de Símbolo 12 2 2 2 2 2 3 instancia 10001" x="0" y="238" width="197" height="238"/>
+</TextureAtlas>

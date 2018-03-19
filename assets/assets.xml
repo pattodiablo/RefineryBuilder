@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="assets.png">
+	<!-- Created with Adobe Animate version 16.2.0.24 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Copia de frutiparesTomate instancia 10000" x="0" y="0" width="94" height="113" pivotX="47" pivotY="57" frameX="0" frameY="-1" frameWidth="94" frameHeight="114"/>
+	<SubTexture name="Copia de frutiparesTomate instancia 10001" x="0" y="113" width="94" height="114"/>
+</TextureAtlas>

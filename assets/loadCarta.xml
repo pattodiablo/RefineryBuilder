@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="loadCarta.png">
+	<!-- Created with Adobe Animate version 16.2.0.24 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="carta instancia 10000" x="0" y="0" width="79" height="121" pivotX="38" pivotY="59"/>
+	<SubTexture name="carta instancia 10001" x="79" y="0" width="79" height="121"/>
+	<SubTexture name="carta instancia 10002" x="158" y="0" width="79" height="121"/>
+	<SubTexture name="carta instancia 10003" x="237" y="0" width="79" height="121"/>
+	<SubTexture name="carta instancia 10004" x="316" y="0" width="79" height="121"/>
+	<SubTexture name="carta instancia 10005" x="395" y="0" width="79" height="121"/>
+	<SubTexture name="carta instancia 10006" x="0" y="121" width="79" height="121"/>
+	<SubTexture name="carta instancia 10007" x="79" y="121" width="79" height="121"/>
+	<SubTexture name="carta instancia 10008" x="158" y="121" width="79" height="121"/>
+	<SubTexture name="carta instancia 10009" x="237" y="121" width="79" height="121"/>
+	<SubTexture name="carta instancia 10010" x="316" y="121" width="79" height="121"/>
+	<SubTexture name="carta instancia 10011" x="395" y="121" width="79" height="121"/>
+	<SubTexture name="carta instancia 10012" x="0" y="242" width="79" height="121"/>
+	<SubTexture name="carta instancia 10013" x="79" y="242" width="79" height="121"/>
+	<SubTexture name="carta instancia 10014" x="158" y="242" width="79" height="121"/>
+	<SubTexture name="carta instancia 10015" x="237" y="242" width="79" height="121"/>
+	<SubTexture name="carta instancia 10016" x="316" y="242" width="79" height="121"/>
+	<SubTexture name="carta instancia 10017" x="395" y="242" width="79" height="121"/>
+	<SubTexture name="carta instancia 10018" x="0" y="363" width="79" height="121"/>
+	<SubTexture name="carta instancia 10019" x="79" y="363" width="79" height="121"/>
+</TextureAtlas>

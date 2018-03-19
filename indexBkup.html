@@ -1,0 +1,300 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Refinery Builder</title>
+        <script src="lib/phaser.min.js"></script>
+      <script src="lib/IniciarJuego.js"></script>
+        <script src="lib/balancin.js"></script>
+      
+    <link href="css/normalize.css" rel="stylesheet" type="text/css">
+    <link href="main.css" rel="stylesheet" type="text/css">
+
+
+
+
+    </head>
+    <body>
+
+    <script type="text/javascript">
+
+		var MyGame = {};
+
+		MyGame.StateA = function (game) {
+			
+		};
+
+		MyGame.StateA.prototype = Object.create(Phaser.State.prototype);
+		MyGame.StateA.prototype.constructor = MyGame.StateA;
+
+		MyGame.StateA.prototype.init = function () {
+			
+			var isLoaded;
+			var progressBar;
+
+
+		};
+	
+		MyGame.StateA.prototype.preload = function () {
+		
+			game.stage.backgroundColor = "#4488AA";
+
+			if(!this.isLoaded){
+
+			this.load.image('cursor', 'assets/cursor.png');
+			this.load.image('progressBar', 'assets/progressBar.png');
+			this.load.image('backgorund', 'assets/backLoad.png');
+ 			this.load.image('tower1p1', 'assets/tower1p1.png');
+			this.load.image('tower1p2', 'assets/tower1p2.png');
+			this.load.image('tower1p3', 'assets/tower1p3.png');
+ 			this.load.image('tower1', 'assets/tower1.png');
+ 			this.load.image('inicioBg', 'assets/inicioBg.png');
+     		this.load.image('inicioBtn', 'assets/playBtn.png');
+     		this.load.image('playAgainBtn', 'assets/playAgainBtn.png');
+			this.load.image('playAgainBtn2', 'assets/playAgainBtn2.png');
+			this.load.image('inscribeteBtn', 'assets/inscribeteBtn.png');
+			this.load.image('bgWin', 'assets/bgWin.png');
+			this.load.image('grass', 'assets/grass.png');
+			this.load.image('playAgainBtn', 'assets/playAgainBtn.png');
+			this.load.atlasXML('readySign', 'assets/readySign.png', 'assets/readySign.xml');
+			//this.balancin = new Balancin();
+			}
+
+			game.load.onLoadStart.add(this.loadStart, this);
+			game.load.onFileComplete.add(this.fileComplete, this);
+			game.load.onLoadComplete.add(this.loadComplete, this);
+			game.load.start();	
+
+		};
+
+		MyGame.StateA.prototype.loadStart = function () {
+			game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;	
+			console.log('load starr');
+		};
+
+		MyGame.StateA.prototype.fileComplete = function (progress, cacheKey, success, totalLoaded, totalFiles) {
+			this.progressBar = this.game.add.sprite(this.game.world.centerX, 20, 'progressBar'); 
+			this.progressBar.anchor.setTo(0.5, 0.5);     
+			
+			this.game.load.setPreloadSprite(this.progressBar); 
+			console.log("File Complete: " + progress + "% - " + totalLoaded + " out of " + totalFiles);
+		};
+
+		MyGame.StateA.prototype.loadComplete = function () {
+			this.isLoaded=true;
+			if(this.isLoaded){
+				game.state.start('Inicio');	
+			}
+			
+
+		};
+	
+
+
+		MyGame.StateB = function (game) {
+			console.log('State:Inicio')
+
+		
+		};
+
+		MyGame.StateB.prototype = Object.create(Phaser.State.prototype);
+		MyGame.StateB.prototype.constructor = MyGame.StateB;
+		
+		MyGame.StateB.prototype.init = function () {
+			
+			var mouseBody;
+			var towerPiece;
+			var line;
+			var mouseSpring;
+			var drawLine;
+			var oscilacion;
+			var oscDireccion;
+			
+			var soltar;
+			var balancin;
+			var constrain;
+			var currentBlock;
+			var clickOnce;
+			var attachedBody;
+			var alturaInicialAncla;
+			var cualPieza;
+			
+
+			};
+		
+		MyGame.StateB.prototype.create = function () {
+			
+			game.world.setBounds(0, 0, 1920, 2160);
+			this.cualPieza=0;
+			this.alturaInicialAncla=500;
+			this.oscilacion=10;
+ 			this.oscDireccion=1;
+ 			
+ 			this.soltar=false;
+ 			this.currentBlock = new Array();
+ 			this.clickOnce=true;
+
+ 			game.physics.startSystem(Phaser.Physics.P2JS);
+	   		game.physics.p2.gravity.y = 300;
+	    	game.physics.p2.restitution = 0.1;
+			
+	    
+
+			this.attachedBody = game.add.sprite(this.game.world.centerX, this.game.world.height-450, 'cursor');
+			  	
+			game.physics.p2.enable(this.attachedBody, false);
+			this.attachedBody.body.static = true;
+			this.attachedBody.body.angle=0;
+
+  			game.camera.follow(this.attachedBody,1);
+
+
+	    	var nuevoBloque =  this.createBlock();
+	    	this.currentBlock.push(nuevoBloque);
+ 			
+  			game.input.addMoveCallback(this.move, this);
+  			game.input.onDown.add(this.click, this);
+  			game.input.onUp.add(this.release, this);
+  			
+  			this.drawLine = true;
+  			
+  				this.grass = game.add.sprite(0, this.game.world.height-450,"grass");
+			game.physics.p2.enable(this.grass, false);
+			this.grass.body.static = true;
+			this.grass.body.angle=0;
+			console.log("creando a mofu");
+ 				
+ 			cursors = game.input.keyboard.createCursorKeys();
+		};
+
+
+		MyGame.StateB.prototype.createBlock = function () {
+
+				
+				var wichPiece = new Array('tower1p1','tower1p2','tower1p2','tower1p2','tower1p2','tower1p2','tower1p2','tower1p3');
+				
+				this.towerPiece = game.add.sprite(this.game.world.centerX, this.attachedBody.body.y-300, wichPiece[this.cualPieza]);
+				console.log(this.cualPieza);
+				if(this.cualPieza>=7){
+
+						this.cualPieza=0;
+				}else{
+
+				this.cualPieza++;	
+				}
+				
+				
+
+				game.physics.p2.enable(this.towerPiece, false);
+			  	//this.tower1.body.setCircle(40);
+			   	this.towerPiece.body.mass=20;
+			  
+			   	this.towerPiece.body.allowSleep=true;
+			  	this.towerPiece.body.fixedRotation=false;
+			  	this.towerPiece.body.damping=0.3;
+			  	this.towerPiece.body.intertia=0;
+				console.log("towerPieceBody " + this.attachedBody.body.y);
+
+	 			this.constrain = game.physics.p2.createRevoluteConstraint(this.attachedBody, [0,0], this.towerPiece, [0,-200]);
+	 			this.towerPiece.body.angularVelocity=10;	 			
+	 			
+
+	 			this.line = new Phaser.Line(this.towerPiece.x, this.towerPiece.y, this.attachedBody.x, this.attachedBody.y);
+	 			
+	 			var graphics=game.add.graphics(0,0);
+	 			graphics.lineStyle(10, 0xffffff, 1);
+				graphics.endFill();
+
+				return(this.towerPiece);
+
+		};
+
+		MyGame.StateB.prototype.click = function (pointer) {
+	
+		
+			game.physics.p2.removeConstraint(this.constrain);
+			if(this.clickOnce){
+				game.time.events.add(3000, crear, this);
+				this.clickOnce=false;
+			}
+			
+
+			function crear(){
+				
+				
+				this.createBlock()
+				this.attachedBody.body.y-=this.towerPiece.height;		
+				this.clickOnce=true;
+
+			}
+		};
+
+		MyGame.StateB.prototype.release = function () {
+			//this.createBlock();
+		};
+
+		MyGame.StateB.prototype.move = function () {
+			
+		};
+
+		MyGame.StateB.prototype.preRender = function () {
+			 this.line.setTo(this.towerPiece.x, this.towerPiece.y, this.attachedBody.x, this.attachedBody.y);
+		};
+
+		MyGame.StateB.prototype.Render = function () {
+			game.debug.geom(this.line);
+		};
+
+		MyGame.StateB.prototype.update = function () {
+			
+			 this.attachedBody.body.setZeroVelocity();
+
+			    if (cursors.up.isDown)
+			    {
+			         this.attachedBody.body.moveUp(300)
+			    }
+			    else if (cursors.down.isDown)
+			    {
+			         this.attachedBody.body.moveDown(300);
+			    }
+
+			    if (cursors.left.isDown)
+			    {
+			         this.attachedBody.body.velocity.x = -300;
+			    }
+			    else if (cursors.right.isDown)
+			    {
+			         this.attachedBody.body.moveRight(300);
+			    }
+
+		
+			this.line.fromSprite(this.towerPiece, this.attachedBody, true);
+
+		};
+
+		MyGame.StateB.prototype.render = function () {
+			game.debug.geom(this.line);
+
+		};
+
+	var game = new Phaser.Game(1920, 1080, Phaser.AUTO, 'container');  
+	game.state.add('main', MyGame.StateA);  
+	game.state.add('Inicio', MyGame.StateB);  
+	game.state.start('main');
+
+    </script>
+
+
+
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-89601323-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+    </body>
+</html>

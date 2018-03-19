@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="winMovie.png">
+	<!-- Created with Adobe Animate version 16.2.0.24 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="youWin instancia 10000" x="0" y="0" width="33" height="31" pivotX="209.2" pivotY="71" frameX="-176" frameY="-55" frameWidth="463" frameHeight="142"/>
+	<SubTexture name="youWin instancia 10001" x="33" y="0" width="62" height="64" frameX="-143" frameY="-37" frameWidth="463" frameHeight="142"/>
+	<SubTexture name="youWin instancia 10002" x="95" y="0" width="143" height="64" frameX="-46" frameY="-37" frameWidth="463" frameHeight="142"/>
+	<SubTexture name="youWin instancia 10003" x="238" y="0" width="143" height="64" frameX="-12" frameY="-37" frameWidth="463" frameHeight="142"/>
+	<SubTexture name="youWin instancia 10004" x="381" y="0" width="209" height="49" frameX="0" frameY="-37" frameWidth="463" frameHeight="142"/>
+	<SubTexture name="youWin instancia 10005" x="590" y="0" width="51" height="142" frameX="-167" frameY="0" frameWidth="463" frameHeight="142"/>
+	<SubTexture name="youWin instancia 10006" x="641" y="0" width="184" height="142" frameX="-70" frameY="0" frameWidth="463" frameHeight="142"/>
+	<SubTexture name="youWin instancia 10007" x="0" y="142" width="254" height="142" frameX="-36" frameY="0" frameWidth="463" frameHeight="142"/>
+	<SubTexture name="youWin instancia 10008" x="254" y="142" width="302" height="142" frameX="-24" frameY="0" frameWidth="463" frameHeight="142"/>
+	<SubTexture name="youWin instancia 10009" x="556" y="142" width="343" height="142" frameX="-39" frameY="0" frameWidth="463" frameHeight="142"/>
+	<SubTexture name="youWin instancia 10010" x="556" y="142" width="343" height="142" frameX="-39" frameY="0" frameWidth="463" frameHeight="142"/>
+	<SubTexture name="youWin instancia 10011" x="556" y="142" width="343" height="142" frameX="-39" frameY="0" frameWidth="463" frameHeight="142"/>
+	<SubTexture name="youWin instancia 10012" x="556" y="142" width="343" height="142" frameX="-39" frameY="0" frameWidth="463" frameHeight="142"/>
+	<SubTexture name="youWin instancia 10013" x="556" y="142" width="343" height="142" frameX="-39" frameY="0" frameWidth="463" frameHeight="142"/>
+	<SubTexture name="youWin instancia 10014" x="556" y="142" width="343" height="142" frameX="-39" frameY="0" frameWidth="463" frameHeight="142"/>
+	<SubTexture name="youWin instancia 10015" x="0" y="284" width="327" height="142" frameX="-47" frameY="0" frameWidth="463" frameHeight="142"/>
+	<SubTexture name="youWin instancia 10016" x="327" y="284" width="311" height="142" frameX="-55" frameY="0" frameWidth="463" frameHeight="142"/>
+	<SubTexture name="youWin instancia 10017" x="638" y="284" width="327" height="142" frameX="-47" frameY="0" frameWidth="463" frameHeight="142"/>
+	<SubTexture name="youWin instancia 10018" x="0" y="426" width="341" height="142" frameX="-40" frameY="0" frameWidth="463" frameHeight="142"/>
+	<SubTexture name="youWin instancia 10019" x="341" y="426" width="357" height="142" frameX="-32" frameY="0" frameWidth="463" frameHeight="142"/>
+	<SubTexture name="youWin instancia 10020" x="0" y="568" width="346" height="142" frameX="-38" frameY="0" frameWidth="463" frameHeight="142"/>
+	<SubTexture name="youWin instancia 10021" x="346" y="568" width="335" height="142" frameX="-43" frameY="0" frameWidth="463" frameHeight="142"/>
+	<SubTexture name="youWin instancia 10022" x="681" y="568" width="325" height="142" frameX="-48" frameY="0" frameWidth="463" frameHeight="142"/>
+	<SubTexture name="youWin instancia 10023" x="0" y="710" width="319" height="142" frameX="-51" frameY="0" frameWidth="463" frameHeight="142"/>
+	<SubTexture name="youWin instancia 10024" x="319" y="710" width="313" height="142" frameX="-54" frameY="0" frameWidth="463" frameHeight="142"/>
+	<SubTexture name="youWin instancia 10025" x="632" y="710" width="307" height="142" frameX="-57" frameY="0" frameWidth="463" frameHeight="142"/>
+	<SubTexture name="youWin instancia 10026" x="632" y="710" width="307" height="142" frameX="-57" frameY="0" frameWidth="463" frameHeight="142"/>
+	<SubTexture name="youWin instancia 10027" x="632" y="710" width="307" height="142" frameX="-57" frameY="0" frameWidth="463" frameHeight="142"/>
+	<SubTexture name="youWin instancia 10028" x="632" y="710" width="307" height="142" frameX="-57" frameY="0" frameWidth="463" frameHeight="142"/>
+	<SubTexture name="youWin instancia 10029" x="632" y="710" width="307" height="142" frameX="-57" frameY="0" frameWidth="463" frameHeight="142"/>
+	<SubTexture name="youWin instancia 10030" x="327" y="284" width="311" height="142" frameX="-55" frameY="0" frameWidth="463" frameHeight="142"/>
+	<SubTexture name="youWin instancia 10031" x="327" y="284" width="311" height="142" frameX="-55" frameY="0" frameWidth="463" frameHeight="142"/>
+	<SubTexture name="youWin instancia 10032" x="327" y="284" width="311" height="142" frameX="-55" frameY="0" frameWidth="463" frameHeight="142"/>
+	<SubTexture name="youWin instancia 10033" x="327" y="284" width="311" height="142" frameX="-55" frameY="0" frameWidth="463" frameHeight="142"/>
+	<SubTexture name="youWin instancia 10034" x="327" y="284" width="311" height="142" frameX="-55" frameY="0" frameWidth="463" frameHeight="142"/>
+	<SubTexture name="youWin instancia 10035" x="0" y="852" width="294" height="142" frameX="-67" frameY="0" frameWidth="463" frameHeight="142"/>
+	<SubTexture name="youWin instancia 10036" x="294" y="852" width="294" height="142" frameX="-67" frameY="0" frameWidth="463" frameHeight="142"/>
+	<SubTexture name="youWin instancia 10037" x="588" y="852" width="323" height="142" frameX="-67" frameY="0" frameWidth="463" frameHeight="142"/>
+	<SubTexture name="youWin instancia 10038" x="0" y="994" width="316" height="142" frameX="-99" frameY="0" frameWidth="463" frameHeight="142"/>
+	<SubTexture name="youWin instancia 10039" x="316" y="994" width="302" height="142" frameX="-131" frameY="0" frameWidth="463" frameHeight="142"/>
+	<SubTexture name="youWin instancia 10040" x="0" y="1136" width="428" height="142" frameX="-24" frameY="0" frameWidth="463" frameHeight="142"/>
+	<SubTexture name="youWin instancia 10041" x="428" y="1136" width="427" height="142" frameX="-36" frameY="0" frameWidth="463" frameHeight="142"/>
+	<SubTexture name="youWin instancia 10042" x="855" y="1136" width="165" height="142" frameX="-70" frameY="0" frameWidth="463" frameHeight="142"/>
+	<SubTexture name="youWin instancia 10043" x="0" y="1278" width="68" height="142" frameX="-167" frameY="0" frameWidth="463" frameHeight="142"/>
+	<SubTexture name="youWin instancia 10044" x="68" y="1278" width="41" height="142" frameX="-194" frameY="0" frameWidth="463" frameHeight="142"/>
+</TextureAtlas>

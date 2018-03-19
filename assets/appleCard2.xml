@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="appleCard2.png">
+	<!-- Created with Adobe Animate version 16.2.0.24 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Símbolo 12 instancia 10000" x="0" y="0" width="196" height="237" pivotX="98" pivotY="119"/>
+	<SubTexture name="Símbolo 12 instancia 10001" x="0" y="237" width="196" height="237"/>
+</TextureAtlas>

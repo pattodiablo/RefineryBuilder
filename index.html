@@ -1,0 +1,398 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Refinery Builder</title>
+        <script src="lib/phaser.min.js"></script>
+      <script src="lib/IniciarJuego.js"></script>
+        <script src="lib/balancin.js"></script>
+      
+    <link href="css/normalize.css" rel="stylesheet" type="text/css">
+    <link href="main.css" rel="stylesheet" type="text/css">
+
+
+
+
+    </head>
+    <body>
+
+    <script type="text/javascript">
+
+		var MyGame = {};
+
+		MyGame.StateA = function (game) {
+			
+		};
+
+		MyGame.StateA.prototype = Object.create(Phaser.State.prototype);
+		MyGame.StateA.prototype.constructor = MyGame.StateA;
+
+		MyGame.StateA.prototype.init = function () {
+			
+			var isLoaded;
+			var progressBar;
+
+
+		};
+	
+		MyGame.StateA.prototype.preload = function () {
+		
+			game.stage.backgroundColor = "#4488AA";
+
+			if(!this.isLoaded){
+
+			this.load.image('cursor', 'assets/cursor.png');
+			this.load.image('progressBar', 'assets/progressBar.png');
+			this.load.image('backgorund', 'assets/backLoad.png');
+ 			this.load.image('tower1p1', 'assets/tower1p1.png');
+			this.load.image('tower1p2', 'assets/tower1p2.png');
+			this.load.image('tower1p3', 'assets/tower1p3.png');
+
+			this.load.image('cranePiece', 'assets/cranePiece.png');
+			this.load.image('craneBase', 'assets/craneBase.png');
+			this.load.image('craneHead', 'assets/craneHead.png');
+			this.load.image('buildPlatform', 'assets/buildPlatform.png');
+			this.load.image('chainPiece', 'assets/chainPiece.png');
+ 			this.load.image('tower1', 'assets/tower1.png');
+ 			this.load.image('inicioBg', 'assets/inicioBg.png');
+ 			this.load.image('crane', 'assets/crane.png');
+ 			this.load.image('craneWheels', 'assets/craneWheels.png');
+     		this.load.image('inicioBtn', 'assets/playBtn.png');
+     		this.load.image('playAgainBtn', 'assets/playAgainBtn.png');
+			this.load.image('playAgainBtn2', 'assets/playAgainBtn2.png');
+			this.load.image('inscribeteBtn', 'assets/inscribeteBtn.png');
+			this.load.image('bgWin', 'assets/bgWin.png');
+			this.load.image('grass', 'assets/grass.png');
+			this.load.image('playAgainBtn', 'assets/playAgainBtn.png');
+			this.load.atlasXML('readySign', 'assets/readySign.png', 'assets/readySign.xml');
+			//this.balancin = new Balancin();
+			}
+
+			game.load.onLoadStart.add(this.loadStart, this);
+			game.load.onFileComplete.add(this.fileComplete, this);
+			game.load.onLoadComplete.add(this.loadComplete, this);
+			game.load.start();	
+
+		};
+
+		MyGame.StateA.prototype.loadStart = function () {
+			game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;	
+			console.log('load starr');
+		};
+
+		MyGame.StateA.prototype.fileComplete = function (progress, cacheKey, success, totalLoaded, totalFiles) {
+			this.progressBar = this.game.add.sprite(this.game.world.centerX, 20, 'progressBar'); 
+			this.progressBar.anchor.setTo(0.5, 0.5);     
+			
+			this.game.load.setPreloadSprite(this.progressBar); 
+			console.log("File Complete: " + progress + "% - " + totalLoaded + " out of " + totalFiles);
+		};
+
+		MyGame.StateA.prototype.loadComplete = function () {
+			this.isLoaded=true;
+			if(this.isLoaded){
+				game.state.start('Inicio');	
+			}
+			
+
+		};
+	
+
+
+		MyGame.StateB = function (game) {
+			console.log('State:Inicio')
+
+		
+		};
+
+		MyGame.StateB.prototype = Object.create(Phaser.State.prototype);
+		MyGame.StateB.prototype.constructor = MyGame.StateB;
+		
+		MyGame.StateB.prototype.init = function () {
+			
+			var mouseBody;
+			var towerPiece;
+			var line;
+			var mouseSpring;
+			var drawLine;
+			var oscilacion;
+			var oscDireccion;
+			
+			var soltar;
+			var balancin;
+			var constrain;
+			var currentBlock;
+			var clickOnce;
+			var attachedBody;
+			var alturaInicialAncla;
+			var cualPieza;
+			var totalConstrains;
+			var totalChains;
+			
+
+			};
+		
+		MyGame.StateB.prototype.create = function () {
+			
+			game.world.setBounds(0, 0, 1080, 21000);
+			 game.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
+
+
+			this.cualPieza=0;
+			this.alturaInicialAncla=560;
+			this.oscilacion=10;
+ 			this.oscDireccion=1;
+ 			this.soltar=false;
+ 			this.currentBlock = new Array();
+ 			this.clickOnce=true;
+ 			this.totalConstrains = new Array();
+ 			this.totalChains = new Array();
+
+ 			game.physics.startSystem(Phaser.Physics.P2JS);
+	   		game.physics.p2.gravity.y = 340;
+	    	game.physics.p2.restitution = 0.1;
+			
+	    
+
+			this.attachedBody = game.add.sprite(this.game.world.centerX, this.game.world.height-680, 'craneWheels');
+			  	
+			game.physics.p2.enable(this.attachedBody);
+			
+			this.attachedBody.body.kinematic = true;
+			this.attachedBody.body.velocity.x=60;
+			this.attachedBody.body.angle=0;
+			 
+
+
+  			game.camera.follow(this.attachedBody,10,0.1,0.1);
+  			game.camera.height=2100;
+
+	    	var nuevoBloque =  this.createBlock();
+	    	this.currentBlock.push(nuevoBloque);
+ 			
+  			game.input.addMoveCallback(this.move, this);
+  			game.input.onDown.add(this.click, this);
+  			game.input.onUp.add(this.release, this);
+  			
+  			this.drawLine = true;
+  			console.log(this.game.world.height);
+  			this.grass = game.add.sprite(this.game.world.centerX, this.game.world.height-20,"grass");
+			game.physics.p2.enable(this.grass, false);
+			this.grass.body.static = true;
+			this.grass.body.angle=0;
+			
+
+			//this.crane = game.add.sprite(this.game.world.centerX-600, this.game.world.height-1000,"crane");
+ 		
+			this.craneBase = game.add.sprite(this.game.world.centerX-500, this.game.world.height-330,"craneBase");
+
+
+			for(var i=0; i<=this.game.world.height/94; i++){
+			this.cranePiece = game.add.sprite(this.game.world.centerX-433, this.game.world.height-425-i*94,"cranePiece");
+
+			}
+
+			this.craneHead = game.add.sprite(this.game.world.centerX-595, this.game.world.height-800,"craneHead");
+
+			this.buildPlatform = game.add.sprite(this.game.world.centerX-45, this.game.world.height-230,"buildPlatform");
+			game.physics.p2.enable(this.buildPlatform, false);
+			this.buildPlatform.body.static = true;
+			this.buildPlatform.body.angle=0;
+
+ 			cursors = game.input.keyboard.createCursorKeys();
+
+ 			
+		};
+
+
+
+MyGame.StateB.prototype.createRope= function(crane,tower){
+
+    var lastRect;
+    var height = 14;        //  Height for the physics body - your image height is 8px
+    var width = 16;         //  This is the width for the physics body. If too small the rectangles will get scrambled together.
+    var maxForce = 2000;   //  The force that holds the rectangles together.
+	var length=12;
+
+    for (var i = 0; i <= length; i++)
+    {
+    	console.log("crane " + crane.x);
+        var x = crane.x;                    //  All rects are on the same x position
+        var y = crane.y + (i * height);     //  Every new rect is positioned below the last
+
+         
+
+          switch (i){
+
+          	case 0:
+          	
+          		newRect = crane;
+
+          		break;
+
+          	case length:
+				
+				tower.anchor.y=0.5;
+          		tower.body.x=x;
+          		tower.body.y=y;
+				newRect = tower;
+ 				this.constrain=game.physics.p2.createRevoluteConstraint(newRect, [0, 0], lastRect, [0, 0], maxForce+2000);
+				this.totalConstrains.push(this.constrain);
+				break;
+
+          	default:
+          	 	
+          	 	newRect = game.add.sprite(x, y, 'chainPiece');
+	 			//  Enable physicsbody
+	       		 game.physics.p2.enable(newRect, false);
+
+		        //  Set custom rectangle
+		        newRect.body.setRectangle(width, height);
+		        //newRect.body.kinematic=true;
+
+		        newRect.checkWorldBounds = true;
+    newRect.outOfBoundsKill = true;
+		            //  Anchor the first one created
+		          //  newRect.body.velocity.x = 400;      //  Give it a push :) just for fun
+		          newRect.body.mass = length / i;     //  Reduce mass for evey rope element
+		        
+		         this.constrain=game.physics.p2.createRevoluteConstraint(newRect, [0, -8], lastRect, [0, 8], maxForce);
+		         this.totalConstrains.push(this.constrain);
+		         this.totalChains.push(newRect);
+          	break;
+          }
+
+
+        //  After the first rectangle is created we can add the constraint
+       
+        lastRect = newRect;
+
+    }
+
+
+};
+
+
+		MyGame.StateB.prototype.createBlock = function () {
+
+				
+				var wichPiece = new Array('tower1p2','tower1p2','tower1p2','tower1p2','tower1p2','tower1p2','tower1p2','tower1p3');
+				
+				this.towerPiece = game.add.sprite(0, 0, wichPiece[this.cualPieza]);
+				
+				if(this.cualPieza>=7){
+
+						this.cualPieza=0;
+				}else{
+
+				this.cualPieza++;	
+				}
+
+				game.physics.p2.enable(this.towerPiece, false);
+			  	//this.tower1.body.setCircle(40);
+			   	this.towerPiece.body.mass=30;
+			   	this.towerPiece.body.allowSleep=true;
+			  	this.towerPiece.body.fixedRotation=false;
+			  	this.towerPiece.body.damping=0.6;
+			  	this.towerPiece.body.intertia=3;
+
+				var rope=this.createRope(this.attachedBody,this.towerPiece);
+
+	 			//this.constrain = game.physics.p2.createRevoluteConstraint(this.attachedBody, [0,50], this.towerPiece, [0,-100]);
+
+	 			this.towerPiece.body.angularVelocity=0;	 			
+
+				return(this.towerPiece);
+
+		};
+
+		MyGame.StateB.prototype.click = function (pointer) {
+	
+				for(var i=0; i<=this.totalConstrains.length; i++){
+
+				game.physics.p2.removeConstraint(this.totalConstrains[i]);
+
+				}
+				
+			for(var i=0; i<this.totalChains.length; i++){
+			
+				
+				this.totalChains[i].body.collideWorldBounds=false;
+				
+				}
+		
+
+			if(this.clickOnce){
+				game.time.events.add(2000, crear, this);
+				this.clickOnce=false;
+			}
+			
+
+			function crear(){
+				
+				this.createBlock();
+				this.craneHead.y-=this.towerPiece.height
+				this.attachedBody.body.y-=this.towerPiece.height;		
+				this.clickOnce=true;
+
+			}
+		};
+
+		MyGame.StateB.prototype.release = function () {
+			//this.createBlock();
+		};
+
+		MyGame.StateB.prototype.move = function () {
+			
+		};
+
+		MyGame.StateB.prototype.preRender = function () {
+		 game.debug.cameraInfo(game.camera, 32, 32);
+		};
+
+		MyGame.StateB.prototype.Render = function () {
+			game.debug.geom(this.line);
+		};
+
+	
+		MyGame.StateB.prototype.update = function () {
+		
+			if(this.attachedBody.x>=this.game.world.centerX+60){
+
+					this.attachedBody.body.velocity.x--;
+			}
+		
+				if(this.attachedBody.x<=this.game.world.centerX-60){
+
+					this.attachedBody.body.velocity.x++;
+			}
+
+		
+		};
+
+		MyGame.StateB.prototype.render = function () {
+			game.debug.geom(this.line);
+
+		};
+
+	var game = new Phaser.Game(1080, 1920, Phaser.AUTO, 'container');  
+	game.state.add('main', MyGame.StateA);  
+	game.state.add('Inicio', MyGame.StateB);  
+	game.state.start('main');
+
+    </script>
+
+
+
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-89601323-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+    </body>
+</html>
